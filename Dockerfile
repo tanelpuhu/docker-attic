@@ -2,9 +2,6 @@ FROM ubuntu:14.04
 
 ENV VERSION 0.16
 
-# Dunno...
-ENV ATTIC_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK=yes
-
 RUN mkdir /code && \
     cd /code && \
     apt-get update && \
@@ -13,5 +10,8 @@ RUN mkdir /code && \
     wget https://attic-backup.org/downloads/releases/$VERSION/Attic-$VERSION-linux-x86_64.tar.gz && \
     tar xzvf Attic-$VERSION-linux-x86_64.tar.gz && \
     mv Attic-$VERSION-linux-x86_64 attic
+
+# Dunno...
+ENV ATTIC_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK=yes
 
 ENTRYPOINT ["/code/attic/attic"]
